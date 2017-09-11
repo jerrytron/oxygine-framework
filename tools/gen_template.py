@@ -16,7 +16,7 @@ if sys.version_info[0] >= 3:
     unicode = str
 
 
-platforms = ("win32", "android", "macosx", "ios", "ios_mac", "cmake", "all")
+platforms = ("win32", "android", "androidstudio", "macosx", "ios", "ios_mac", "cmake", "all")
 
 
 def relpath(a, b):
@@ -147,6 +147,11 @@ def _run(args):
 
             SRC = process(tmsrc, relto, args.src, cpp_files)
             # INCLUDE = process(tminc, relto, args.src, h_files)
+        if args.type == "androidstudio":
+            tmsrc = "${FILE} "
+            relto = dest_path + "/jni/src/"
+
+            SRC = process(tmsrc, relto, args.src, cpp_files)
 
         if args.type == "cmake" or args.type == "emscripten":
             tmsrc = "${FILE} "
