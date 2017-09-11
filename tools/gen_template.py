@@ -319,6 +319,9 @@ def _run(args):
             print("src " + src_path)
             tp = guess_type(src_path)
 
+            if fname == ".gitignore":
+                tp = ("text", "")
+
             if ext in (".storyboard", ".gradle", ".xib") or fname == "gradlew":
                 tp = ("text", "")
 
